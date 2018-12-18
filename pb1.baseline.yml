@@ -1,0 +1,25 @@
+---
+#-----------------------------------------------------------------------------------------------------------------------
+# Synposis:
+# Load a base configuration for demo. This was tested in Ansible version 2.2.3.0 and Juniper.junos Ansible Galaxy
+# modules version 1.4.2.
+# Usage: ansible-playbook pb1.baseline.yml
+#-----------------------------------------------------------------------------------------------------------------------
+- name:         Loading Junos baseline configuration file 
+  hosts:        srx
+  connection:   local
+  gather_facts: no
+  roles:
+    -           Juniper.junos
+  tasks:
+    - name:     Check NETCONF connectivity
+      wait_for: host={{ inventory_hostname }} port=830 timeout=5
+    - name:     Loading configuration
+      junos_install_config:
+        host={{ inventory_hostname }}
+        user={{ jusername }}
+        passwd={{ jpassword }}
+        file="{{ playbook_dir }}/{{ inventory_hostname }}_base.conf"
+        overwrite=yes
+        comment="config by Ansible"
+        logfile=pb1_baseline.log

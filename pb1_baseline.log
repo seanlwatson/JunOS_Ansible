@@ -1,0 +1,72 @@
+2017-06-08 22:09:13,343:CONFIG:vsrx1:connecting to host: seanw@vsrx1:830
+2017-06-08 22:09:13,380:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6.1)
+2017-06-08 22:09:13,403:CONFIG:vsrx2:connecting to host: seanw@vsrx2:830
+2017-06-08 22:09:13,426:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6.1)
+2017-06-08 22:09:13,683:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-06-08 22:09:13,694:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-06-08 22:09:13,922:ncclient.transport.session:initialized: session-id=7084 | server_capabilities=<dictionary-keyiterator object at 0x109a4ee10>
+2017-06-08 22:09:13,922:CONFIG:vsrx2:pushing file: /Users/seanw/Desktop/bgp/vsrx2_base.conf
+2017-06-08 22:09:13,922:CONFIG:vsrx2:taking lock
+2017-06-08 22:09:13,922:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:13,946:ncclient.transport.session:initialized: session-id=9259 | server_capabilities=<dictionary-keyiterator object at 0x10c0aae10>
+2017-06-08 22:09:13,946:CONFIG:vsrx1:pushing file: /Users/seanw/Desktop/bgp/vsrx1_base.conf
+2017-06-08 22:09:13,947:CONFIG:vsrx1:taking lock
+2017-06-08 22:09:13,947:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:14,043:CONFIG:vsrx2:loading config
+2017-06-08 22:09:14,044:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:14,070:CONFIG:vsrx1:loading config
+2017-06-08 22:09:14,071:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:14,376:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:14,450:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:14,598:CONFIG:vsrx2:doing a commit-check, please be patient
+2017-06-08 22:09:14,598:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:14,882:CONFIG:vsrx1:doing a commit-check, please be patient
+2017-06-08 22:09:14,882:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:15,810:CONFIG:vsrx2:committing change, please be patient
+2017-06-08 22:09:15,810:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:16,050:CONFIG:vsrx1:committing change, please be patient
+2017-06-08 22:09:16,050:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:18,082:CONFIG:vsrx2:unlocking
+2017-06-08 22:09:18,083:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:18,204:CONFIG:vsrx2:change completed
+2017-06-08 22:09:18,204:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-06-08 22:09:19,380:CONFIG:vsrx1:unlocking
+2017-06-08 22:09:19,380:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-08 22:09:19,503:CONFIG:vsrx1:change completed
+2017-06-08 22:09:19,503:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-06-09 13:58:21,828:CONFIG:vsrx2:connecting to host: seanw@vsrx2:830
+2017-06-09 13:58:21,828:CONFIG:vsrx1:connecting to host: seanw@vsrx1:830
+2017-06-09 13:58:21,859:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6.1)
+2017-06-09 13:58:21,862:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6.1)
+2017-06-09 13:58:22,189:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-06-09 13:58:22,233:ncclient.transport.ssh:Authentication (publickey) successful!
+2017-06-09 13:58:22,425:ncclient.transport.session:initialized: session-id=8941 | server_capabilities=<dictionary-keyiterator object at 0x110ae7e68>
+2017-06-09 13:58:22,425:CONFIG:vsrx2:pushing file: /Users/seanw/PycharmProjects/ansible/bgp/vsrx2_base.conf
+2017-06-09 13:58:22,425:CONFIG:vsrx2:taking lock
+2017-06-09 13:58:22,426:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:22,553:CONFIG:vsrx2:loading config
+2017-06-09 13:58:22,553:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:22,641:ncclient.transport.session:initialized: session-id=11244 | server_capabilities=<dictionary-keyiterator object at 0x108266e68>
+2017-06-09 13:58:22,641:CONFIG:vsrx1:pushing file: /Users/seanw/PycharmProjects/ansible/bgp/vsrx1_base.conf
+2017-06-09 13:58:22,641:CONFIG:vsrx1:taking lock
+2017-06-09 13:58:22,641:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:22,758:CONFIG:vsrx1:loading config
+2017-06-09 13:58:22,760:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:22,985:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:23,142:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:23,360:CONFIG:vsrx2:doing a commit-check, please be patient
+2017-06-09 13:58:23,361:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:23,619:CONFIG:vsrx1:doing a commit-check, please be patient
+2017-06-09 13:58:23,619:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:24,529:CONFIG:vsrx2:committing change, please be patient
+2017-06-09 13:58:24,529:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:25,304:CONFIG:vsrx1:committing change, please be patient
+2017-06-09 13:58:25,304:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:27,603:CONFIG:vsrx2:unlocking
+2017-06-09 13:58:27,603:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:27,669:CONFIG:vsrx2:change completed
+2017-06-09 13:58:27,670:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-06-09 13:58:28,807:CONFIG:vsrx1:unlocking
+2017-06-09 13:58:28,807:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-06-09 13:58:28,875:CONFIG:vsrx1:change completed
+2017-06-09 13:58:28,875:ncclient.operations.rpc:Requesting 'CloseSession'

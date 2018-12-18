@@ -1,0 +1,96 @@
+---
+#-----------------------------------------------------------------------------------------------------------------------
+# Synposis:
+# Create two eBGP sessions with multipath enabled and ECMP. Perform testing and verify BGP states are 'Established', 
+# that BGP routes exist for peer loopbacks, and that all loopbacks are reachable (via ICMP ping). This was tested in
+# Ansible version 2.2.3.0 and Juniper.junos Ansible Galaxy modules version 1.4.2.
+# Usage: ansible-playbook pb2.bgp.yml
+#-----------------------------------------------------------------------------------------------------------------------
+# Play 1
+#-----------------------------------------------------------------------------------------------------------------------
+- name:              Create config/build directory
+  hosts:             localhost
+  gather_facts:      no
+  tasks:
+    - name:          Remove build directory
+      file:          path={{ build }} state=absent
+    - name:          Create build directory
+      file:          path={{ build }} state=directory
+#-----------------------------------------------------------------------------------------------------------------------
+# Play 2
+#-----------------------------------------------------------------------------------------------------------------------
+- name:              Create BGP configuration
+  hosts:             srx
+  connection:        local
+  gather_facts:      no  
+  tasks:
+    - name:          Build configuration
+      template:      src={{ playbook_dir }}/bgp.j2 dest={{ build }}/{{ inventory_hostname }}.conf
+      notify:
+        -            Pushing config ... please wait
+  handlers:
+    - name:          Pushing config ... please wait
+      junos_config:
+        host:        "{{ inventory_hostname }}"
+        provider:    "{{ credentials }}"
+        src:         "{{ build }}/{{ inventory_hostname }}.conf"
+        src_format:  set
+        comment:     "config by Ansible junos_config"
+#-----------------------------------------------------------------------------------------------------------------------
+# Play 3
+#-----------------------------------------------------------------------------------------------------------------------
+- name:              Wait for peers to establish
+  hosts:             localhost
+  gather_facts:      no
+  tasks:
+    - pause:         seconds=35
+#-----------------------------------------------------------------------------------------------------------------------
+# Play 4
+#-----------------------------------------------------------------------------------------------------------------------
+- name:              Check BGP states
+  hosts:             srx
+  connection:        local
+  gather_facts:      no
+  tasks:
+    - name:          Check states
+      junos_command:
+        provider:    "{{ credentials }}"
+        host:        "{{ inventory_hostname }}"
+        commands:
+          -          show bgp neighbor "{{ item.peer_ip }}"
+        waitfor:
+          -          "result[0].bgp-information.bgp-peer.peer-state eq Established"
+        retries:     3
+        interval:    2
+      with_items:
+        -            "{{ neighbors }}"
+    - name:          Check BGP routes
+      junos_command:
+        provider:    "{{ credentials }}"
+        host:        "{{ inventory_hostname }}"
+        commands:
+          -          show route protocol bgp "{{ item.peer_loopback }}"/32
+        waitfor:
+          -          "result[0].route-information.route-table.rt.rt-destination eq {{ item.peer_loopback }}/32"
+      with_items:
+        -            "{{ neighbors }}"
+#-----------------------------------------------------------------------------------------------------------------------
+# Play 5
+#-----------------------------------------------------------------------------------------------------------------------
+- name:              Ping destination
+  hosts:             srx
+  roles:
+    -                Juniper.junos  
+  connection:        local
+  gather_facts:      no
+  tasks:          
+    - name:          Ping
+      junos_ping:
+        host={{ inventory_hostname}}
+        user={{ jusername }}
+        passwd={{ jpassword }}
+        dest_ip={{ item.peer_loopback }}
+        source_ip={{ item.local_ip }}
+        ttl=1
+      with_items:
+        -            "{{ neighbors }}"
